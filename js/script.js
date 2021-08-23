@@ -67,20 +67,24 @@ const getCheckedAnswer = () => {
 	AnsList.forEach((AnsCurrent) => {
 		if(AnsCurrent.checked) {
 			answer = AnsCurrent.id;
-			console.log(answer)
 		}
 	});
 	return answer
 }
-const deselectAll = () => {
-	AnsList.forEach((currentAns) => currentAns.checked = false);
+function deselectAll() {
+	for(let i = 0; i < AnsList.length; i++) {
+		AnsList[i].checked = false;
+	}
 }
+// const deselectAll = () => {
+// 	AnsList.forEach((currentAns) => currentAns.checked = false);
+// 	
+// }
 submit.addEventListener('click', () => {
 	const qFq = questionsForQuiz[countQuest];
 	const checkedAnswer = getCheckedAnswer();
 	if(checkedAnswer === qFq.correct) {
 		correct_answers++;
-		console.log(correct_answers)
 	}
 	countQuest++;
 	deselectAll();
